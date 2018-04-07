@@ -15,7 +15,7 @@ if(isset($_POST['submit'])){
 
         if ($_FILES["file"]["size"][$i] > 1000000 || ($_FILES["file"]["size"] == 0)) {
             echo $errors[] = "Votre fichier est trop lourd";
-            ?> <a href="javascript:history.go(-1)">Retour</a><?php
+            ?> <a href="form.php">Retour</a><?php
             die();
 
         }
@@ -23,7 +23,7 @@ if(isset($_POST['submit'])){
         $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
         if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "gif") {
             echo $errors[] = "Seuls les fichers jpg, png et gif sont acceptés.";
-            ?> <a href="javascript:history.go(-1)">Retour</a><?php
+            ?> <a href="form.php">Retour</a><?php
             die();
         }
 
