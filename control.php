@@ -10,6 +10,8 @@ if(isset($_POST['submit'])){
     // Looping all files
     for($i=0; $i<$countfiles; $i++){
         $target_file = $dir . basename($_FILES['file']["name"][$i]);
+        $imageFileType = '';
+
 
         if ($_FILES["file"]["size"][$i] > 1000000 || ($_FILES["file"]["size"] == 0)) {
             echo $errors[] = "Votre fichier est trop lourd";
@@ -24,13 +26,13 @@ if(isset($_POST['submit'])){
             ?> <a href="javascript:history.go(-1)">Retour</a><?php
             die();
         }
-        $extension = pathinfo($_FILES['fichier']['name'], PATHINFO_EXTENSION);
-        $filename = "Image" . uniqid() . '.' .$extension . $imageFileType;
 
 
-        // Upload file
-        move_uploaded_file($_FILES['file']['tmp_name'][$i],'control/'.$filename);
+            $extension = pathinfo($_FILES['file']['name'][$i], PATHINFO_EXTENSION);
+            $filename = "Image" . uniqid() . '.' . $extension ;
+            // Upload file
+            move_uploaded_file($_FILES['file']['tmp_name'][$i], 'control/' . $filename);}
 
-    }
+
 }
 header('location:form.php');
